@@ -1,0 +1,11 @@
+003_cracker_box /mnt/proj3/open-29-7/varun_ws/datasets/YCB-V/ycbv/test/000054 38
+003_cracker_box /mnt/proj3/open-29-7/varun_ws/datasets/YCB-V/ycbv/test/000054 135
+003_cracker_box /mnt/proj3/open-29-7/varun_ws/datasets/YCB-V/ycbv/test/000054 1025
+003_cracker_box /mnt/proj3/open-29-7/varun_ws/datasets/YCB-V/ycbv/test/000054 530
+003_cracker_box /mnt/proj3/open-29-7/varun_ws/datasets/YCB-V/ycbv/test/000054 63
+003_cracker_box /mnt/proj3/open-29-7/varun_ws/datasets/YCB-V/ycbv/test/000054 1024
+003_cracker_box /mnt/proj3/open-29-7/varun_ws/datasets/YCB-V/ycbv/test/000054 1557
+003_cracker_box /mnt/proj3/open-29-7/varun_ws/datasets/YCB-V/ycbv/test/000054 1089
+003_cracker_box /mnt/proj3/open-29-7/varun_ws/datasets/YCB-V/ycbv/test/000054 32
+003_cracker_box /mnt/proj3/open-29-7/varun_ws/datasets/YCB-V/ycbv/test/000054 1547
+003_cracker_box /mnt/proj3/open-29-7/varun_ws/datasets/YCB-V/ycbv/test/000054 1032

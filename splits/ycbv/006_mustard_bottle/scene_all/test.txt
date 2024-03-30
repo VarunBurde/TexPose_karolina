@@ -1,0 +1,8 @@
+006_mustard_bottle /mnt/proj3/open-29-7/varun_ws/datasets/YCB-V/ycbv/test/000052 524
+006_mustard_bottle /mnt/proj3/open-29-7/varun_ws/datasets/YCB-V/ycbv/test/000052 61
+006_mustard_bottle /mnt/proj3/open-29-7/varun_ws/datasets/YCB-V/ycbv/test/000052 527
+006_mustard_bottle /mnt/proj3/open-29-7/varun_ws/datasets/YCB-V/ycbv/test/000052 638
+006_mustard_bottle /mnt/proj3/open-29-7/varun_ws/datasets/YCB-V/ycbv/test/000052 175
+006_mustard_bottle /mnt/proj3/open-29-7/varun_ws/datasets/YCB-V/ycbv/test/000052 543
+006_mustard_bottle /mnt/proj3/open-29-7/varun_ws/datasets/YCB-V/ycbv/test/000052 742
+006_mustard_bottle /mnt/proj3/open-29-7/varun_ws/datasets/YCB-V/ycbv/test/000052 39

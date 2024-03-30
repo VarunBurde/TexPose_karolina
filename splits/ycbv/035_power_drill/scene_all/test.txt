@@ -1,0 +1,13 @@
+035_power_drill /mnt/proj3/open-29-7/varun_ws/datasets/YCB-V/ycbv/test/000054 38
+035_power_drill /mnt/proj3/open-29-7/varun_ws/datasets/YCB-V/ycbv/test/000054 135
+035_power_drill /mnt/proj3/open-29-7/varun_ws/datasets/YCB-V/ycbv/test/000054 1025
+035_power_drill /mnt/proj3/open-29-7/varun_ws/datasets/YCB-V/ycbv/test/000054 530
+035_power_drill /mnt/proj3/open-29-7/varun_ws/datasets/YCB-V/ycbv/test/000054 63
+035_power_drill /mnt/proj3/open-29-7/varun_ws/datasets/YCB-V/ycbv/test/000054 1024
+035_power_drill /mnt/proj3/open-29-7/varun_ws/datasets/YCB-V/ycbv/test/000054 1557
+035_power_drill /mnt/proj3/open-29-7/varun_ws/datasets/YCB-V/ycbv/test/000054 1089
+035_power_drill /mnt/proj3/open-29-7/varun_ws/datasets/YCB-V/ycbv/test/000054 32
+035_power_drill /mnt/proj3/open-29-7/varun_ws/datasets/YCB-V/ycbv/test/000054 1547
+035_power_drill /mnt/proj3/open-29-7/varun_ws/datasets/YCB-V/ycbv/test/000054 1032
+035_power_drill /mnt/proj3/open-29-7/varun_ws/datasets/YCB-V/ycbv/test/000054 537
+035_power_drill /mnt/proj3/open-29-7/varun_ws/datasets/YCB-V/ycbv/test/000054 524

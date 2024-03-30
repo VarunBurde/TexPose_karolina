@@ -1,0 +1,10 @@
+007_tuna_fish_can /mnt/proj3/open-29-7/varun_ws/datasets/YCB-V/ycbv/test/000048 2133
+007_tuna_fish_can /mnt/proj3/open-29-7/varun_ws/datasets/YCB-V/ycbv/test/000048 2104
+007_tuna_fish_can /mnt/proj3/open-29-7/varun_ws/datasets/YCB-V/ycbv/test/000048 1024
+007_tuna_fish_can /mnt/proj3/open-29-7/varun_ws/datasets/YCB-V/ycbv/test/000048 1587
+007_tuna_fish_can /mnt/proj3/open-29-7/varun_ws/datasets/YCB-V/ycbv/test/000048 1137
+007_tuna_fish_can /mnt/proj3/open-29-7/varun_ws/datasets/YCB-V/ycbv/test/000048 1133
+007_tuna_fish_can /mnt/proj3/open-29-7/varun_ws/datasets/YCB-V/ycbv/test/000048 1124
+007_tuna_fish_can /mnt/proj3/open-29-7/varun_ws/datasets/YCB-V/ycbv/test/000048 2069
+007_tuna_fish_can /mnt/proj3/open-29-7/varun_ws/datasets/YCB-V/ycbv/test/000048 2083
+007_tuna_fish_can /mnt/proj3/open-29-7/varun_ws/datasets/YCB-V/ycbv/test/000048 1611

@@ -116,5 +116,5 @@ render:
 # Setting for patch16x16
 batch_size: 8                                               # batch size
 patch_size: 16                                              # patch size for sampling
-max_epoch: 6000                                             # train to maximum number of epochs
+max_epoch: 6000                                       # train to maximum number of epochs
 syn2real:

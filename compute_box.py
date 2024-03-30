@@ -28,6 +28,14 @@ LM_ID2NAME = {
     7: "cup", 8: "driller", 9: "duck", 10: "eggbox", 11: "glue", 12: "holepuncher",
     13: "iron", 14: "lamp", 15: "phone"}
 
+YCB_ID2NAME = {
+    1: "002_master_chef_can", 2: "003_cracker_box", 3: "004_sugar_box", 4: "005_tomato_soup_can", 5: "006_mustard_bottle",
+    6: "007_tuna_fish_can", 7: "008_pudding_box", 8: "009_gelatin_box", 9: "010_potted_meat_can", 10: "011_banana",
+    11: "019_pitcher_base", 12: "021_bleach_cleanser", 13: "024_bowl", 14: "025_mug", 15: "035_power_drill",
+    16: "036_wood_block", 17: "037_scissors", 18: "040_large_marker", 19: "051_large_clamp", 20: "052_extra_large_clamp",
+    21: "061_foam_brick"
+}
+
 
 def compose_Rt(rot_gt, tra_gt):
     gt_pose = np.eye(4)
@@ -132,6 +140,9 @@ def parse_options():
                         action="store_true")
     parser.add_argument("--verbose",
                         action="store_true")
+    parser.add_argument("--root",
+                        type=str,
+                        default='dummy')
     return parser.parse_args()
 
 
@@ -143,22 +154,57 @@ def evaluate(opt):
     else:
         device = torch.device("cpu")
 
-    # Initialize CAD Model
+    # # Initialize CAD Model
+    # if opt.dataset == 'lm':
+    #     object_name = LM_ID2NAME[opt.object_id]
+    # else:
+    #     object_name = str(opt.object_id)
+
+    # Acquire name and ID
     if opt.dataset == 'lm':
         object_name = LM_ID2NAME[opt.object_id]
+
+    elif opt.dataset == 'ycbv':
+        object_name = YCB_ID2NAME[opt.object_id]
     else:
-        object_name = str(opt.object_id)
+        object_name = opt.object
 
     model = data.cad_model.CAD_Model()
     model_eval = data.cad_model.CAD_Model()
-    model_dir = os.path.join(opt.data_path, opt.dataset, opt.dataset + '_models')
-    model.load(os.path.join(model_dir, 'models', 'obj_{}.ply'.format(str(opt.object_id).zfill(6))))
-    model_eval.load(os.path.join(model_dir, 'models_eval', 'obj_{}.ply'.format(str(opt.object_id).zfill(6))))
+
+    if opt.dataset == 'ycbv':
+        cad_model_dir = os.path.join(opt.root, opt.dataset)
+    else:
+        cad_model_dir = os.path.join(opt.root, opt.dataset, opt.dataset + '_models')
+
+    # cad_model_dir = os.path.join(opt.data_path, opt.dataset, opt.dataset + '_models')
+    # model.load(os.path.join(model_dir, 'models', 'obj_{}.ply'.format(str(opt.object_id).zfill(6))))
+    # model_eval.load(os.path.join(model_dir, 'models_eval', 'obj_{}.ply'.format(str(opt.object_id).zfill(6))))
+    #
+    # # Initialize renderer
+    # ply_fn = os.path.join(model_dir, 'models_eval', 'obj_{}.ply'.format(str(opt.object_id).zfill(6)))
+    # verts, faces = load_ply(ply_fn)
+    # textured_mesh = o3d.io.read_triangle_mesh(ply_fn)
+    print(object_name)
+
+    model.load(os.path.join(cad_model_dir, 'models', 'obj_{:06d}.ply'.format(opt.object_id)))
+    model_eval.load(os.path.join(cad_model_dir, 'models_eval', 'obj_{:06d}.ply'.format(opt.object_id)))
 
     # Initialize renderer
-    ply_fn = os.path.join(model_dir, 'models_eval', 'obj_{}.ply'.format(str(opt.object_id).zfill(6)))
-    verts, faces = load_ply(ply_fn)
+    if opt.dataset == 'ycbv':
+        ply_fn = os.path.join(cad_model_dir, 'models_texpose', 'obj_{:06d}.ply'.format(opt.object_id))
+        ply_fn_torch = os.path.join(cad_model_dir, 'models', 'obj_{:06d}.ply'.format(opt.object_id))
+    else:
+        ply_fn = os.path.join(cad_model_dir, 'models', 'obj_{}.ply'.format(str(opt.object_id).zfill(6)))
+
     textured_mesh = o3d.io.read_triangle_mesh(ply_fn)
+
+    if opt.dataset == 'ycbv':
+        verts, faces = load_ply(ply_fn_torch)
+    else:
+        verts, faces = load_ply(ply_fn)
+
+
     color = torch.from_numpy(np.asarray(textured_mesh.vertex_colors).astype(np.float32))[None]
     textures = TexturesVertex(verts_features=color)
 
@@ -169,22 +215,25 @@ def evaluate(opt):
     mv_renderer = MVRenderer(cad_mesh, opt.res, opt.res, 1, cam, mode='complex')
 
     # Acquire the CAD diameter
-    with open(os.path.join(model_dir, 'models_eval', 'models_info.json')) as f_info:
+    with open(os.path.join(cad_model_dir, 'models_eval', 'models_info.json')) as f_info:
         model_info = json.load(f_info)
         f_info.close()
     model_diameter = float(model_info[str(opt.object_id)]['diameter'])
 
     # Initialize dataset and dataloader
     data_path = os.path.join(opt.data_path, opt.dataset)
-    if 'train_syn2real' in opt.split_name:
-        data_path = '../self6dpp/datasets/BOP_DATASETS'
+    # if 'train_syn2real' in opt.split_name:
+    #     data_path = '../self6dpp/datasets/BOP_DATASETS'
 
     split_path = os.path.join("splits", opt.dataset, object_name, "{}.txt".format(opt.split_name))
     samples = readlines(split_path)
 
+
     # Load GT pose, camera intrinsics and meta information
     line = samples[0].split(' ')
     model_name, folder = line[0], line[1]
+    print(model_name, folder)
+
     scene_obj_path = os.path.join(data_path, folder, 'scene_object.json')
     scene_gt_path = os.path.join(data_path, folder, 'scene_gt.json')
     scene_pred_path = os.path.join(data_path, folder, 'scene_pred_{}.json'.format(opt.pred_loop))
@@ -254,7 +303,6 @@ def evaluate(opt):
         # Acquire the emitted rays measured in current frame
         name = str(line[2]).zfill(6)
 
-        # acquire the pose and intrinsics
         rot = scene_pose_source[box_source][str(frame_index)][obj_scene_id]['cam_R_m2c']
         tra = scene_pose_source[box_source][str(frame_index)][obj_scene_id]['cam_t_m2c']
         cam = np.array(scene_cam_all[str(frame_index)]["cam_K"], dtype=np.float32).reshape(3, 3)
@@ -340,4 +388,3 @@ def evaluate(opt):
 if __name__ == "__main__":
     options = parse_options()
     evaluate(options)
-

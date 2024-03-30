@@ -1,0 +1,151 @@
+002_master_chef_can
+torch.Size([3, 3])
+002_master_chef_can /mnt/proj3/open-29-7/varun_ws/datasets/YCB-V/ycbv/test/000051
+Loading predicted pose from: /mnt/proj3/open-29-7/varun_ws/datasets/YCB-V/ycbv/test/000051/scene_pred_init_calib.json
+Saving bounding boxes ...
+setting configurations...
+loading options/base_ycbv.yaml...
+loading options/nerf_ycbv_adapt_gan.yaml...
+"data.name" not found in original opt, add? (y/n) Process ID: 57610
+[train.py] (PyTorch code for training NeRF/BARF)
+setting configurations...
+loading options/base_ycbv.yaml...
+loading options/nerf_ycbv_adapt_gan.yaml...
+"data.name" not found in original opt, add? (y/n) Process ID: 57635
+[evaluate.py] (PyTorch code for evaluating NeRF/BARF)
+setting configurations...
+loading options/base_ycbv.yaml...
+loading options/nerf_ycbv_adapt_gan.yaml...
+* H: 480
+* W: 640
+* arch:
+   * density_activ: softplus
+   * layers_feat: [None, 256, 256, 256, 256, 256, 256, 256, 256]
+   * layers_rgb: [None, 256, 256, 256, 3]
+   * layers_trans: [None, 256, 256, 256, 5]
+   * posenc:
+      * L_3D: 10
+      * L_view: 4
+   * skip: [4]
+   * tf_init: True
+* batch_size: 1
+* c2f:
+   * range: None
+   * start: None
+* camera:
+   * model: perspective
+   * ndc: False
+* cpu: False
+* data:
+   * augment:
+   * bgcolor: None
+   * box_format: None
+   * center_crop: None
+   * dataset: ycbv
+   * erode_mask: True
+   * erode_mask_loss: None
+   * image_size: [480, 640]
+   * mask_visib_source: mask_pred_init
+   * multi_obj: None
+   * num_workers: 4
+   * object: 002_master_chef_can
+   * pose_loop: init_calib
+   * pose_source: predicted
+   * preload: False
+   * root: dataset/
+   * scene: scene_syn2real_layer
+   * scene_info_source: predicted
+   * train_sub: None
+   * val_on_test: False
+   * val_sub: None
+* device: cuda:0
+* freq:
+   * ckpt: 5000
+   * print: 500
+   * scalar: 100
+   * val: 2000
+   * vis: 500
+* gan:
+   * L_nocs: None
+   * L_normal: None
+   * L_scale: 4
+   * geo_c2f: None
+   * geo_conditional: True
+   * scale_conditional: True
+   * type: standard
+* gpu: 0
+* group: ycbv
+* load: None
+* loss_weight:
+   * depth: None
+   * feat: -2
+   * gan_disc_fake: 0
+   * gan_disc_real: 0
+   * gan_nerf: -1
+   * gan_reg_fake: None
+   * gan_reg_real: 1
+   * lab: None
+   * mask: None
+   * render: 0
+   * trans_reg: -2
+   * uncert: 0
+* max_epoch: 60
+* model: nerf_adapt_st_gan
+* name: 002_master_chef_can
+* nerf:
+   * N_latent: 32
+   * N_latent_light: 48
+   * N_latent_trans: 16
+   * density_noise_reg: None
+   * depth:
+      * box_mask: False
+      * box_source: pred_box_init_calib
+      * param: metric
+      * range: [0, 3]
+      * range_source: box
+      * scale: 10
+   * fine_sampling: False
+   * mask_obj: True
+   * min_uncert: 0.05
+   * rand_rays: 2048
+   * ray_obj_ratio: 0.9
+   * sample_intvs: 64
+   * sample_intvs_fine: None
+   * sample_stratified: True
+   * setbg_opaq  ue: None
+   * view_dep: True
+* optim:
+   * algo: Adam
+   * lr: 0.001
+   * lr_end: 0.0001
+   * sched:
+      * gamma: 0.9996163094458892
+      * type: ExponentialLR
+* optim_disc:
+   * algo: RMSprop
+   * lr: 0.0001
+* output_path: output/ycbv/002_master_chef_can
+* output_root: output
+* patch_size: 16
+* render:
+   * N_candidate: 3
+   * geo_save_dir: None
+   * save_path: render_test
+   * transient: zero
+* resume: True
+* resume_pretrain: False
+* resume_real: False
+* save_config_mode: True
+* seed: 0
+* syn2real: True
+* tb:
+   * num_images: [3, 4]
+* visdom:
+   * port: 8097
+   * server: localhost
+* yaml: nerf_ycbv_adapt_gan
+Setting up [LPIPS] perceptual loss: trunk [alex], v[0.1], spatial [off]
+Loading model from: /mnt/proj3/open-29-7/.conda/envs/texpose/lib/python3.9/site-packages/lpips/weights/v0.1/alex.pth
+loading training data...
+number of samples: 75
+loading test data...

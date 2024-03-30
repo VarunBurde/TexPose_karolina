@@ -1,0 +1,7 @@
+009_gelatin_box /mnt/proj3/open-29-7/varun_ws/datasets/YCB-V/ycbv/test/000058 576
+009_gelatin_box /mnt/proj3/open-29-7/varun_ws/datasets/YCB-V/ycbv/test/000058 529
+009_gelatin_box /mnt/proj3/open-29-7/varun_ws/datasets/YCB-V/ycbv/test/000058 30
+009_gelatin_box /mnt/proj3/open-29-7/varun_ws/datasets/YCB-V/ycbv/test/000058 553
+009_gelatin_box /mnt/proj3/open-29-7/varun_ws/datasets/YCB-V/ycbv/test/000058 1035
+009_gelatin_box /mnt/proj3/open-29-7/varun_ws/datasets/YCB-V/ycbv/test/000058 541
+009_gelatin_box /mnt/proj3/open-29-7/varun_ws/datasets/YCB-V/ycbv/test/000058 215

@@ -1,0 +1,1 @@
+004_sugar_box /mnt/proj3/open-29-7/varun_ws/datasets/YCB-V/ycbv/test/000051 681

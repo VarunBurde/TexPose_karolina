@@ -1,0 +1,37 @@
+  0%|          | 0/75 [00:00<?, ?it/s]/mnt/proj3/open-29-7/.conda/envs/texpose/lib/python3.9/site-packages/torch/functional.py:504: UserWarning: torch.meshgrid: in an upcoming release, it will be required to pass the indexing argument. (Triggered internally at /home/conda/feedstock_root/build_artifacts/libtorch_1706726118919/work/aten/src/ATen/native/TensorShape.cpp:3526.)
+  return _VF.meshgrid(tensors, **kwargs)  # type: ignore[attr-defined]
+  4%|▍         | 3/75 [00:00<00:02, 26.06it/s]  8%|▊         | 6/75 [00:00<00:02, 25.18it/s] 12%|█▏        | 9/75 [00:00<00:02, 25.84it/s] 16%|█▌        | 12/75 [00:00<00:02, 26.20it/s] 20%|██        | 15/75 [00:00<00:02, 26.72it/s] 24%|██▍       | 18/75 [00:00<00:02, 26.67it/s] 28%|██▊       | 21/75 [00:00<00:02, 26.85it/s] 32%|███▏      | 24/75 [00:00<00:01, 26.48it/s] 36%|███▌      | 27/75 [00:01<00:01, 26.07it/s] 40%|████      | 30/75 [00:01<00:01, 26.07it/s] 44%|████▍     | 33/75 [00:01<00:01, 25.57it/s] 48%|████▊     | 36/75 [00:01<00:01, 25.89it/s] 52%|█████▏    | 39/75 [00:01<00:01, 26.55it/s] 56%|█████▌    | 42/75 [00:01<00:01, 26.62it/s] 60%|██████    | 45/75 [00:01<00:01, 26.32it/s] 64%|██████▍   | 48/75 [00:01<00:01, 26.18it/s] 68%|██████▊   | 51/75 [00:01<00:00, 26.56it/s] 72%|███████▏  | 54/75 [00:02<00:00, 26.86it/s] 76%|███████▌  | 57/75 [00:02<00:00, 27.51it/s] 80%|████████  | 60/75 [00:02<00:00, 28.09it/s] 84%|████████▍ | 63/75 [00:02<00:00, 27.26it/s] 88%|████████▊ | 66/75 [00:02<00:00, 26.03it/s] 93%|█████████▎| 70/75 [00:02<00:00, 27.39it/s] 97%|█████████▋| 73/75 [00:02<00:00, 26.86it/s]100%|██████████| 75/75 [00:02<00:00, 26.59it/s]
+Traceback (most recent call last):
+  File "/mnt/proj3/open-29-7/varun_ws/pose_estimator_ws/Texpose_self6d/TexPose_karolina/compute_surfelinfo.py", line 177, in <module>
+    opt = options.set(opt_cmd=opt_cmd)
+  File "/mnt/proj3/open-29-7/varun_ws/pose_estimator_ws/Texpose_self6d/TexPose_karolina/options.py", line 54, in set
+    opt = override_options(opt_base, opt_cmd, key_stack=[], safe_check=True)
+  File "/mnt/proj3/open-29-7/varun_ws/pose_estimator_ws/Texpose_self6d/TexPose_karolina/options.py", line 80, in override_options
+    opt[key] = override_options(opt.get(key, dict()), value, key_stack=key_stack + [key], safe_check=safe_check)
+  File "/mnt/proj3/open-29-7/varun_ws/pose_estimator_ws/Texpose_self6d/TexPose_karolina/options.py", line 87, in override_options
+    add_new = input("\"{}\" not found in original opt, add? (y/n) ".format(key_str))
+EOFError: EOF when reading a line
+Traceback (most recent call last):
+  File "/mnt/proj3/open-29-7/varun_ws/pose_estimator_ws/Texpose_self6d/TexPose_karolina/train.py", line 13, in <module>
+    opt = options.set(opt_cmd=opt_cmd)
+  File "/mnt/proj3/open-29-7/varun_ws/pose_estimator_ws/Texpose_self6d/TexPose_karolina/options.py", line 54, in set
+    opt = override_options(opt_base, opt_cmd, key_stack=[], safe_check=True)
+  File "/mnt/proj3/open-29-7/varun_ws/pose_estimator_ws/Texpose_self6d/TexPose_karolina/options.py", line 80, in override_options
+    opt[key] = override_options(opt.get(key, dict()), value, key_stack=key_stack + [key], safe_check=safe_check)
+  File "/mnt/proj3/open-29-7/varun_ws/pose_estimator_ws/Texpose_self6d/TexPose_karolina/options.py", line 87, in override_options
+    add_new = input("\"{}\" not found in original opt, add? (y/n) ".format(key_str))
+EOFError: EOF when reading a line
+/mnt/proj3/open-29-7/.conda/envs/texpose/lib/python3.9/site-packages/torchvision/io/image.py:13: UserWarning: Failed to load image Python extension: '/mnt/proj3/open-29-7/.conda/envs/texpose/lib/python3.9/site-packages/torchvision/image.so: undefined symbol: _ZN5torch3jit17parseSchemaOrNameERKSs'If you don't plan on using image functionality from `torchvision.io`, you can ignore this warning. Otherwise, there might be something wrong with your environment. Did you have `libjpeg` or `libpng` installed before building `torchvision` from source?
+  warn(
+/mnt/proj3/open-29-7/.conda/envs/texpose/lib/python3.9/site-packages/torchvision/models/_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+/mnt/proj3/open-29-7/.conda/envs/texpose/lib/python3.9/site-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=AlexNet_Weights.IMAGENET1K_V1`. You can also use `weights=AlexNet_Weights.DEFAULT` to get the most up-to-date weights.
+  warnings.warn(msg)
+Traceback (most recent call last):
+  File "/mnt/proj3/open-29-7/varun_ws/pose_estimator_ws/Texpose_self6d/TexPose_karolina/evaluate.py", line 20, in <module>
+    m.load_dataset(opt, eval_split="test")
+  File "/mnt/proj3/open-29-7/varun_ws/pose_estimator_ws/Texpose_self6d/TexPose_karolina/model/nerf_adapt_st_gan.py", line 49, in load_dataset
+    self.test_data = data.Dataset(opt, split=eval_split, subset=opt.data.val_sub, multi_obj=opt.data.multi_obj)
+  File "/mnt/proj3/open-29-7/varun_ws/pose_estimator_ws/Texpose_self6d/TexPose_karolina/data/ycbvsyn2real.py", line 35, in __init__
+    line = self.list[0].split(' ')
+IndexError: list index out of range

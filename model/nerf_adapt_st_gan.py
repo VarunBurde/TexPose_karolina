@@ -564,6 +564,7 @@ class Graph(base.Graph):
 
         else:
             batch_size = len(pose)
+
             # [B,HW,3], center and ray measured in world frame
             center, ray = camera.get_center_and_ray(opt, pose, intr=intr)
             while ray.isnan().any():

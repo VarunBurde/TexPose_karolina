@@ -1,0 +1,465 @@
+Process ID: 30783
+[train.py] (PyTorch code for training NeRF/BARF)
+setting configurations...
+loading options/base_ycbv.yaml...
+loading options/nerf_ycbv_adapt_gan.yaml...
+* H: 128
+* W: 128
+* arch:
+   * density_activ: softplus
+   * layers_feat: [None, 256, 256, 256, 256, 256, 256, 256, 256]
+   * layers_rgb: [None, 256, 256, 256, 3]
+   * layers_trans: [None, 256, 256, 256, 5]
+   * posenc:
+      * L_3D: 10
+      * L_view: 4
+   * skip: [4]
+   * tf_init: True
+* batch_size: 1
+* c2f:
+   * range: None
+   * start: None
+* camera:
+   * model: perspective
+   * ndc: False
+* cpu: False
+* data:
+   * augment:
+   * bgcolor: None
+   * box_format: None
+   * center_crop: None
+   * dataset: ycbv
+   * erode_mask: True
+   * erode_mask_loss: None
+   * image_size: [128, 128]
+   * mask_visib_source: mask_pred_init
+   * multi_obj: None
+   * num_workers: 4
+   * object: 002_master_chef_can
+   * pose_loop: init_calib
+   * pose_source: predicted
+   * preload: True
+   * root: dataset/
+   * scene: scene_all
+   * scene_info_source: predicted
+   * train_sub: None
+   * val_on_test: False
+   * val_sub: None
+* device: cuda:0
+* freq:
+   * ckpt: 5000
+   * print: 500
+   * scalar: 100
+   * val: 2000
+   * vis: 500
+* gan:
+   * L_nocs: None
+   * L_normal: None
+   * L_scale: 4
+   * geo_c2f: None
+   * geo_conditional: True
+   * scale_conditional: True
+   * type: standard
+* gpu: 0
+* group: Duck
+* load: None
+* loss_weight:
+   * depth: None
+   * feat: -2
+   * gan_disc_fake: 0
+   * gan_disc_real: 0
+   * gan_nerf: -1
+   * gan_reg_fake: None
+   * gan_reg_real: 1
+   * lab: None
+   * mask: None
+   * render: 0
+   * trans_reg: -2
+   * uncert: 0
+* max_epoch: 6000
+* model: nerf_adapt_st_gan
+* name: test_can
+* nerf:
+   * N_latent: 32
+   * N_latent_light: 48
+   * N_latent_trans: 16
+   * density_noise_reg: None
+   * depth:
+      * box_mask: False
+      * box_source: pred_box_init_calib
+      * param: metric
+      * range: [0, 3]
+      * range_source: box
+      * scale: 10
+   * fine_sampling: False
+   * mask_obj: True
+   * min_uncert: 0.05
+   * rand_rays: 2048
+   * ray_obj_ratio: 0.9
+   * sample_intvs: 64
+   * sample_intvs_fine: None
+   * sample_stratified: True
+   * setbg_opaq  ue: None
+   * view_dep: True
+* optim:
+   * algo: Adam
+   * lr: 0.001
+   * lr_end: 0.0001
+   * sched:
+      * gamma: 0.9996163094458892
+      * type: ExponentialLR
+* optim_disc:
+   * algo: RMSprop
+   * lr: 0.0001
+* output_path: output/Duck/test_can
+* output_root: output
+* patch_size: 16
+* render:
+   * N_candidate: 3
+   * geo_save_dir: None
+   * save_path: None
+   * transient: zero
+* resume: False
+* resume_pretrain: True
+* resume_real: False
+* save_config_mode: True
+* seed: 0
+* syn2real: None
+* tb:
+   * num_images: [3, 4]
+* visdom:
+   * port: 8097
+   * server: localhost
+* yaml: nerf_ycbv_adapt_gan
+Setting up [LPIPS] perceptual loss: trunk [alex], v[0.1], spatial [off]
+Loading model from: /mnt/proj3/open-29-7/.conda/envs/texpose/lib/python3.9/site-packages/lpips/weights/v0.1/alex.pth
+loading training data...
+Use predicted pose from /mnt/proj3/open-29-7/varun_ws/datasets/YCB-V/ycbv/test/000048/scene_pred_init_calib.json ...
+number of samples: 75
+loading test data...
+Use predicted pose from /mnt/proj3/open-29-7/varun_ws/datasets/YCB-V/ycbv/test/000048/scene_pred_init_calib.json ...
+number of samples: 75
+building networks...
+setting up optimizers...
+0.9996163094458892
+resuming from previous checkpoint...
+restoring pretrained nerf mlp_feat for geometric feature extraction...
+initializing rest of the weights from scratch...
+setting up visualizers...
+TRAINING START
+[val] loss:3.433e+00
+[val] loss:4.255e+01
+[val] loss:4.244e+01
+checkpoint saved: (Duck) test_can, epoch 66 (iteration 5000)
+[val] loss:4.241e+01
+[val] loss:4.249e+01
+[val] loss:4.245e+01
+checkpoint saved: (Duck) test_can, epoch 133 (iteration 10000)
+[val] loss:4.250e+01
+[val] loss:4.246e+01
+checkpoint saved: (Duck) test_can, epoch 199 (iteration 15000)
+[val] loss:4.244e+01
+[val] loss:4.242e+01
+[val] loss:4.243e+01
+checkpoint saved: (Duck) test_can, epoch 266 (iteration 20000)
+[val] loss:4.245e+01
+[val] loss:4.244e+01
+checkpoint saved: (Duck) test_can, epoch 333 (iteration 25000)
+[val] loss:4.242e+01
+[val] loss:4.244e+01
+[val] loss:4.242e+01
+checkpoint saved: (Duck) test_can, epoch 399 (iteration 30000)
+[val] loss:4.243e+01
+[val] loss:4.242e+01
+checkpoint saved: (Duck) test_can, epoch 466 (iteration 35000)
+[val] loss:4.245e+01
+[val] loss:4.261e+01
+[val] loss:4.243e+01
+checkpoint saved: (Duck) test_can, epoch 533 (iteration 40000)
+[val] loss:4.242e+01
+[val] loss:4.243e+01
+checkpoint saved: (Duck) test_can, epoch 599 (iteration 45000)
+[val] loss:4.244e+01
+[val] loss:4.242e+01
+[val] loss:4.245e+01
+checkpoint saved: (Duck) test_can, epoch 666 (iteration 50000)
+[val] loss:4.242e+01
+[val] loss:4.244e+01
+checkpoint saved: (Duck) test_can, epoch 733 (iteration 55000)
+[val] loss:4.245e+01
+[val] loss:4.250e+01
+[val] loss:4.247e+01
+checkpoint saved: (Duck) test_can, epoch 799 (iteration 60000)
+[val] loss:4.245e+01
+[val] loss:4.244e+01
+checkpoint saved: (Duck) test_can, epoch 866 (iteration 65000)
+[val] loss:4.246e+01
+[val] loss:4.245e+01
+[val] loss:4.241e+01
+checkpoint saved: (Duck) test_can, epoch 933 (iteration 70000)
+[val] loss:4.243e+01
+[val] loss:4.243e+01
+checkpoint saved: (Duck) test_can, epoch 999 (iteration 75000)
+[val] loss:4.252e+01
+[val] loss:4.240e+01
+[val] loss:4.188e+01
+checkpoint saved: (Duck) test_can, epoch 1066 (iteration 80000)
+[val] loss:4.245e+01
+[val] loss:4.242e+01
+checkpoint saved: (Duck) test_can, epoch 1133 (iteration 85000)
+[val] loss:3.962e+01
+[val] loss:4.251e+01
+[val] loss:4.241e+01
+checkpoint saved: (Duck) test_can, epoch 1199 (iteration 90000)
+[val] loss:4.248e+01
+[val] loss:4.245e+01
+checkpoint saved: (Duck) test_can, epoch 1266 (iteration 95000)
+[val] loss:7.467e+00
+[val] loss:6.366e+00
+[val] loss:7.561e+00
+checkpoint saved: (Duck) test_can, epoch 1333 (iteration 100000)
+[val] loss:6.528e+00
+[val] loss:5.130e+00
+checkpoint saved: (Duck) test_can, epoch 1399 (iteration 105000)
+[val] loss:5.291e+00
+[val] loss:5.506e+00
+[val] loss:5.757e+00
+checkpoint saved: (Duck) test_can, epoch 1466 (iteration 110000)
+[val] loss:5.951e+00
+[val] loss:6.210e+00
+checkpoint saved: (Duck) test_can, epoch 1533 (iteration 115000)
+[val] loss:6.964e+00
+[val] loss:6.426e+00
+[val] loss:6.400e+00
+checkpoint saved: (Duck) test_can, epoch 1599 (iteration 120000)
+[val] loss:6.434e+00
+[val] loss:6.601e+00
+checkpoint saved: (Duck) test_can, epoch 1666 (iteration 125000)
+[val] loss:6.712e+00
+[val] loss:6.968e+00
+[val] loss:7.042e+00
+checkpoint saved: (Duck) test_can, epoch 1733 (iteration 130000)
+[val] loss:6.604e+00
+[val] loss:6.628e+00
+checkpoint saved: (Duck) test_can, epoch 1799 (iteration 135000)
+[val] loss:7.600e+00
+[val] loss:6.789e+00
+[val] loss:6.432e+00
+checkpoint saved: (Duck) test_can, epoch 1866 (iteration 140000)
+[val] loss:4.253e+01
+[val] loss:4.250e+01
+checkpoint saved: (Duck) test_can, epoch 1933 (iteration 145000)
+[val] loss:6.833e+00
+[val] loss:8.607e+00
+[val] loss:6.809e+00
+checkpoint saved: (Duck) test_can, epoch 1999 (iteration 150000)
+[val] loss:6.986e+00
+[val] loss:4.254e+01
+checkpoint saved: (Duck) test_can, epoch 2066 (iteration 155000)
+[val] loss:4.251e+01
+[val] loss:4.263e+01
+[val] loss:4.250e+01
+checkpoint saved: (Duck) test_can, epoch 2133 (iteration 160000)
+[val] loss:4.249e+01
+[val] loss:4.255e+01
+checkpoint saved: (Duck) test_can, epoch 2199 (iteration 165000)
+[val] loss:4.218e+01
+[val] loss:4.250e+01
+[val] loss:4.249e+01
+checkpoint saved: (Duck) test_can, epoch 2266 (iteration 170000)
+[val] loss:4.254e+01
+[val] loss:4.244e+01
+checkpoint saved: (Duck) test_can, epoch 2333 (iteration 175000)
+[val] loss:4.256e+01
+[val] loss:4.248e+01
+[val] loss:4.251e+01
+checkpoint saved: (Duck) test_can, epoch 2399 (iteration 180000)
+[val] loss:4.247e+01
+[val] loss:4.252e+01
+checkpoint saved: (Duck) test_can, epoch 2466 (iteration 185000)
+[val] loss:4.253e+01
+[val] loss:4.258e+01
+[val] loss:4.252e+01
+checkpoint saved: (Duck) test_can, epoch 2533 (iteration 190000)
+[val] loss:4.258e+01
+[val] loss:4.253e+01
+checkpoint saved: (Duck) test_can, epoch 2599 (iteration 195000)
+[val] loss:4.253e+01
+[val] loss:4.273e+01
+[val] loss:4.249e+01
+checkpoint saved: (Duck) test_can, epoch 2666 (iteration 200000)
+[val] loss:4.263e+01
+[val] loss:4.275e+01
+checkpoint saved: (Duck) test_can, epoch 2733 (iteration 205000)
+[val] loss:4.243e+01
+[val] loss:4.270e+01
+[val] loss:4.266e+01
+checkpoint saved: (Duck) test_can, epoch 2799 (iteration 210000)
+[val] loss:4.254e+01
+[val] loss:4.285e+01
+checkpoint saved: (Duck) test_can, epoch 2866 (iteration 215000)
+[val] loss:4.245e+01
+[val] loss:4.250e+01
+[val] loss:4.255e+01
+checkpoint saved: (Duck) test_can, epoch 2933 (iteration 220000)
+[val] loss:4.266e+01
+[val] loss:4.248e+01
+checkpoint saved: (Duck) test_can, epoch 2999 (iteration 225000)
+[val] loss:4.260e+01
+[val] loss:4.275e+01
+[val] loss:4.262e+01
+checkpoint saved: (Duck) test_can, epoch 3066 (iteration 230000)
+[val] loss:4.271e+01
+[val] loss:4.244e+01
+checkpoint saved: (Duck) test_can, epoch 3133 (iteration 235000)
+[val] loss:4.254e+01
+[val] loss:4.262e+01
+[val] loss:4.247e+01
+checkpoint saved: (Duck) test_can, epoch 3199 (iteration 240000)
+[val] loss:4.267e+01
+[val] loss:4.256e+01
+checkpoint saved: (Duck) test_can, epoch 3266 (iteration 245000)
+[val] loss:4.247e+01
+[val] loss:4.248e+01
+[val] loss:4.248e+01
+checkpoint saved: (Duck) test_can, epoch 3333 (iteration 250000)
+[val] loss:4.255e+01
+[val] loss:4.250e+01
+checkpoint saved: (Duck) test_can, epoch 3399 (iteration 255000)
+[val] loss:4.270e+01
+[val] loss:4.257e+01
+[val] loss:4.272e+01
+checkpoint saved: (Duck) test_can, epoch 3466 (iteration 260000)
+[val] loss:4.298e+01
+[val] loss:4.305e+01
+checkpoint saved: (Duck) test_can, epoch 3533 (iteration 265000)
+[val] loss:4.293e+01
+[val] loss:4.247e+01
+[val] loss:4.390e+01
+checkpoint saved: (Duck) test_can, epoch 3599 (iteration 270000)
+[val] loss:4.339e+01
+[val] loss:4.258e+01
+checkpoint saved: (Duck) test_can, epoch 3666 (iteration 275000)
+[val] loss:4.241e+01
+[val] loss:4.278e+01
+[val] loss:4.011e+01
+checkpoint saved: (Duck) test_can, epoch 3733 (iteration 280000)
+[val] loss:4.261e+01
+[val] loss:4.287e+01
+checkpoint saved: (Duck) test_can, epoch 3799 (iteration 285000)
+[val] loss:4.239e+01
+[val] loss:4.323e+01
+[val] loss:4.284e+01
+checkpoint saved: (Duck) test_can, epoch 3866 (iteration 290000)
+[val] loss:4.302e+01
+[val] loss:4.251e+01
+checkpoint saved: (Duck) test_can, epoch 3933 (iteration 295000)
+[val] loss:4.312e+01
+[val] loss:4.364e+01
+[val] loss:3.895e+01
+checkpoint saved: (Duck) test_can, epoch 3999 (iteration 300000)
+[val] loss:4.265e+01
+[val] loss:4.587e+01
+checkpoint saved: (Duck) test_can, epoch 4066 (iteration 305000)
+[val] loss:4.152e+01
+[val] loss:4.202e+01
+[val] loss:4.249e+01
+checkpoint saved: (Duck) test_can, epoch 4133 (iteration 310000)
+[val] loss:4.258e+01
+[val] loss:4.252e+01
+checkpoint saved: (Duck) test_can, epoch 4199 (iteration 315000)
+[val] loss:4.255e+01
+[val] loss:7.233e+01
+[val] loss:4.283e+01
+checkpoint saved: (Duck) test_can, epoch 4266 (iteration 320000)
+[val] loss:4.471e+01
+[val] loss:4.393e+01
+checkpoint saved: (Duck) test_can, epoch 4333 (iteration 325000)
+[val] loss:4.130e+01
+[val] loss:4.918e+01
+[val] loss:3.496e+01
+checkpoint saved: (Duck) test_can, epoch 4399 (iteration 330000)
+[val] loss:3.433e+01
+[val] loss:4.988e+01
+checkpoint saved: (Duck) test_can, epoch 4466 (iteration 335000)
+[val] loss:4.300e+01
+[val] loss:4.156e+01
+[val] loss:3.974e+01
+checkpoint saved: (Duck) test_can, epoch 4533 (iteration 340000)
+[val] loss:4.266e+01
+[val] loss:4.473e+01
+checkpoint saved: (Duck) test_can, epoch 4599 (iteration 345000)
+[val] loss:4.156e+01
+[val] loss:4.473e+01
+[val] loss:4.133e+01
+checkpoint saved: (Duck) test_can, epoch 4666 (iteration 350000)
+[val] loss:4.170e+01
+[val] loss:4.297e+01
+checkpoint saved: (Duck) test_can, epoch 4733 (iteration 355000)
+[val] loss:4.092e+01
+[val] loss:3.746e+01
+[val] loss:4.009e+01
+checkpoint saved: (Duck) test_can, epoch 4799 (iteration 360000)
+[val] loss:3.891e+01
+[val] loss:4.424e+01
+checkpoint saved: (Duck) test_can, epoch 4866 (iteration 365000)
+[val] loss:4.212e+01
+[val] loss:4.245e+01
+[val] loss:4.283e+01
+checkpoint saved: (Duck) test_can, epoch 4933 (iteration 370000)
+[val] loss:5.633e+01
+[val] loss:4.319e+01
+checkpoint saved: (Duck) test_can, epoch 4999 (iteration 375000)
+[val] loss:4.345e+01
+[val] loss:4.505e+01
+[val] loss:4.252e+01
+checkpoint saved: (Duck) test_can, epoch 5066 (iteration 380000)
+[val] loss:4.251e+01
+[val] loss:4.257e+01
+checkpoint saved: (Duck) test_can, epoch 5133 (iteration 385000)
+[val] loss:4.272e+01
+[val] loss:4.506e+01
+[val] loss:4.291e+01
+checkpoint saved: (Duck) test_can, epoch 5199 (iteration 390000)
+[val] loss:4.264e+01
+[val] loss:4.271e+01
+checkpoint saved: (Duck) test_can, epoch 5266 (iteration 395000)
+[val] loss:3.887e+01
+[val] loss:4.200e+01
+[val] loss:4.235e+01
+checkpoint saved: (Duck) test_can, epoch 5333 (iteration 400000)
+[val] loss:3.632e+01
+[val] loss:4.312e+01
+checkpoint saved: (Duck) test_can, epoch 5399 (iteration 405000)
+[val] loss:4.298e+01
+[val] loss:4.302e+01
+[val] loss:4.255e+01
+checkpoint saved: (Duck) test_can, epoch 5466 (iteration 410000)
+[val] loss:4.302e+01
+[val] loss:3.658e+01
+checkpoint saved: (Duck) test_can, epoch 5533 (iteration 415000)
+[val] loss:4.236e+01
+[val] loss:4.270e+01
+[val] loss:4.098e+01
+checkpoint saved: (Duck) test_can, epoch 5599 (iteration 420000)
+[val] loss:4.288e+01
+[val] loss:3.824e+01
+checkpoint saved: (Duck) test_can, epoch 5666 (iteration 425000)
+[val] loss:4.270e+01
+[val] loss:4.271e+01
+[val] loss:3.765e+01
+checkpoint saved: (Duck) test_can, epoch 5733 (iteration 430000)
+[val] loss:4.302e+01
+[val] loss:4.249e+01
+checkpoint saved: (Duck) test_can, epoch 5799 (iteration 435000)
+[val] loss:4.158e+01
+[val] loss:3.753e+01
+[val] loss:4.346e+01
+checkpoint saved: (Duck) test_can, epoch 5866 (iteration 440000)
+[val] loss:4.276e+01
+[val] loss:4.281e+01
+checkpoint saved: (Duck) test_can, epoch 5933 (iteration 445000)
+[val] loss:4.372e+01
+[val] loss:4.188e+01
+[val] loss:4.223e+01
+checkpoint saved: (Duck) test_can, epoch 5999 (iteration 450000)

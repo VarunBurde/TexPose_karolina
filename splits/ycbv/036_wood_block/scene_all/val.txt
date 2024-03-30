@@ -1,0 +1,7 @@
+036_wood_block /mnt/proj3/open-29-7/varun_ws/datasets/YCB-V/ycbv/test/000055 22
+036_wood_block /mnt/proj3/open-29-7/varun_ws/datasets/YCB-V/ycbv/test/000055 100
+036_wood_block /mnt/proj3/open-29-7/varun_ws/datasets/YCB-V/ycbv/test/000055 1025
+036_wood_block /mnt/proj3/open-29-7/varun_ws/datasets/YCB-V/ycbv/test/000055 603
+036_wood_block /mnt/proj3/open-29-7/varun_ws/datasets/YCB-V/ycbv/test/000055 793
+036_wood_block /mnt/proj3/open-29-7/varun_ws/datasets/YCB-V/ycbv/test/000055 512
+036_wood_block /mnt/proj3/open-29-7/varun_ws/datasets/YCB-V/ycbv/test/000055 654

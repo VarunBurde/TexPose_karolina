@@ -71,18 +71,18 @@ class Model():
         log.info("setting up visualizers...")
         if opt.tb:
             self.tb = torch.utils.tensorboard.SummaryWriter(log_dir=opt.output_path, flush_secs=10)
-        if opt.visdom:
-            # check if visdom server is runninng
-            is_open = util.check_socket_open(opt.visdom.server, opt.visdom.port)
-            retry = None
-            while not is_open:
-                retry = input("visdom port ({}) not open, retry? (y/n) ".format(opt.visdom.port))
-                if retry not in ["y", "n"]: continue
-                if retry == "y":
-                    is_open = util.check_socket_open(opt.visdom.server, opt.visdom.port)
-                else:
-                    break
-            self.vis = visdom.Visdom(server=opt.visdom.server, port=str(opt.visdom.port), env=opt.group)
+        # if opt.visdom:
+        #     # check if visdom server is runninng
+        #     is_open = util.check_socket_open(opt.visdom.server, opt.visdom.port)
+        #     retry = None
+        #     while not is_open:
+        #         retry = input("visdom port ({}) not open, retry? (y/n) ".format(opt.visdom.port))
+        #         if retry not in ["y", "n"]: continue
+        #         if retry == "y":
+        #             is_open = util.check_socket_open(opt.visdom.server, opt.visdom.port)
+        #         else:
+        #             break
+        #     self.vis = visdom.Visdom(server=opt.visdom.server, port=str(opt.visdom.port), env=opt.group)
 
     def train(self, opt):
         # before training
@@ -100,7 +100,7 @@ class Model():
         if opt.tb:
             self.tb.flush()
             self.tb.close()
-        if opt.visdom: self.vis.close()
+        # if opt.visdom: self.vis.close()
         log.title("TRAINING DONE")
 
     def train_epoch(self, opt, counter):

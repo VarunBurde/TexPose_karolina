@@ -1,0 +1,8 @@
+019_pitcher_base /mnt/proj3/open-29-7/varun_ws/datasets/YCB-V/ycbv/test/000052 524
+019_pitcher_base /mnt/proj3/open-29-7/varun_ws/datasets/YCB-V/ycbv/test/000052 61
+019_pitcher_base /mnt/proj3/open-29-7/varun_ws/datasets/YCB-V/ycbv/test/000052 527
+019_pitcher_base /mnt/proj3/open-29-7/varun_ws/datasets/YCB-V/ycbv/test/000052 638
+019_pitcher_base /mnt/proj3/open-29-7/varun_ws/datasets/YCB-V/ycbv/test/000052 175
+019_pitcher_base /mnt/proj3/open-29-7/varun_ws/datasets/YCB-V/ycbv/test/000052 543
+019_pitcher_base /mnt/proj3/open-29-7/varun_ws/datasets/YCB-V/ycbv/test/000052 742
+019_pitcher_base /mnt/proj3/open-29-7/varun_ws/datasets/YCB-V/ycbv/test/000052 39

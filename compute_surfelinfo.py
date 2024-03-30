@@ -31,7 +31,16 @@ LM_ID2NAME = {
     7: "cup", 8: "driller", 9: "duck", 10: "eggbox", 11: "glue", 12: "holepuncher",
     13: "iron", 14: "lamp", 15: "phone"}
 
+YCB_data = {
+    1: "002_master_chef_can", 2: "003_cracker_box", 3: "004_sugar_box", 4: "005_tomato_soup_can", 5: "006_mustard_bottle",
+    6: "007_tuna_fish_can", 7: "008_pudding_box", 8: "009_gelatin_box", 9: "010_potted_meat_can", 10: "011_banana",
+    11: "019_pitcher_base", 12: "021_bleach_cleanser", 13: "024_bowl", 14: "025_mug", 15: "035_power_drill",
+    16: "036_wood_block", 17: "037_scissors", 18: "040_large_marker", 19: "051_large_clamp", 20: "052_extra_large_clamp",
+    21: "061_foam_brick"
+}
+
 LM_ID2NAME = {v: k for k, v in LM_ID2NAME.items()}
+YCB_ID2NAME = {v: k for k, v in YCB_data.items()}
 
 
 def normal_from_depth(pose, depth, intr, h, w, vis=False):
@@ -70,20 +79,41 @@ def compute_surfelinfo(opt):
     # Acquire name and ID
     if opt.data.dataset == 'lm':
         object_id = LM_ID2NAME[opt.data.object]
+
+    elif opt.data.dataset == 'ycbv':
+        object_id = YCB_ID2NAME[opt.data.object]
     else:
         object_id = opt.data.object
+
+
 
     # Initialize CAD Model
     cad_model = data.cad_model.CAD_Model()
     cad_model_eval = data.cad_model.CAD_Model()
-    cad_model_dir = os.path.join(opt.data.root, opt.data.dataset, opt.data.dataset + '_models')
+
+    if opt.data.dataset == 'ycbv':
+        cad_model_dir = os.path.join(opt.data.root, opt.data.dataset)
+    else:
+        cad_model_dir = os.path.join(opt.data.root, opt.data.dataset, opt.data.dataset + '_models')
+
+
     cad_model.load(os.path.join(cad_model_dir, 'models', 'obj_{:06d}.ply'.format(object_id)))
     cad_model_eval.load(os.path.join(cad_model_dir, 'models_eval', 'obj_{:06d}.ply'.format(object_id)))
 
     # Initialize renderer
-    ply_fn = os.path.join(cad_model_dir, 'models', 'obj_{}.ply'.format(str(object_id).zfill(6)))
-    verts, faces = load_ply(ply_fn)
+    if opt.data.dataset == 'ycbv':
+        ply_fn = os.path.join(cad_model_dir, 'models_texpose', 'obj_{:06d}.ply'.format(object_id))
+        ply_fn_torch = os.path.join(cad_model_dir, 'models', 'obj_{:06d}.ply'.format(object_id))
+    else:
+        ply_fn = os.path.join(cad_model_dir, 'models', 'obj_{}.ply'.format(str(object_id).zfill(6)))
+
     textured_mesh = o3d.io.read_triangle_mesh(ply_fn)
+
+    if opt.data.dataset == 'ycbv':
+        verts, faces = load_ply(ply_fn_torch)
+    else:
+        verts, faces = load_ply(ply_fn)
+
     color = torch.from_numpy(np.asarray(textured_mesh.vertex_colors).astype(np.float32))[None]
     textures = TexturesVertex(verts_features=color)
     cad_mesh = Meshes(verts=verts[None].to(device), faces=faces[None].to(device), textures=textures.to(device))
@@ -94,6 +124,7 @@ def compute_surfelinfo(opt):
 
     m = model.Model(opt)
     m.load_dataset(opt, eval_split="train")
+
     # Iterate over all samples
     print("Rendering Surfel Geometric Information...")
     with torch.no_grad():
@@ -123,6 +154,7 @@ def compute_surfelinfo(opt):
             rgba_syn = np.concatenate([rgb_syn, alpha_syn], axis=-1)
 
             # save rgb
+
             pred_loop = opt.data.pose_loop
             os.makedirs(os.path.join(opt.render.geo_save_dir, 'rgbsyn_{}'.format(pred_loop)), exist_ok=True)
             save_path = os.path.join(opt.render.geo_save_dir, 'rgbsyn_{}/{:06d}.png'.format(pred_loop, frame_idx))
