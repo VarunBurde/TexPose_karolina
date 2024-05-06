@@ -1,7 +1,0 @@
-024_bowl /mnt/proj3/open-29-7/varun_ws/datasets/YCB-V/ycbv/test/000053 519
-024_bowl /mnt/proj3/open-29-7/varun_ws/datasets/YCB-V/ycbv/test/000053 84
-024_bowl /mnt/proj3/open-29-7/varun_ws/datasets/YCB-V/ycbv/test/000053 142
-024_bowl /mnt/proj3/open-29-7/varun_ws/datasets/YCB-V/ycbv/test/000053 152
-024_bowl /mnt/proj3/open-29-7/varun_ws/datasets/YCB-V/ycbv/test/000053 556
-024_bowl /mnt/proj3/open-29-7/varun_ws/datasets/YCB-V/ycbv/test/000053 167
-024_bowl /mnt/proj3/open-29-7/varun_ws/datasets/YCB-V/ycbv/test/000053 145

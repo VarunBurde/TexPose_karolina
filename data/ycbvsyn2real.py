@@ -19,13 +19,14 @@ from util import log, debug, readlines
 class Dataset(base.Dataset):
 
     def __init__(self, opt, split="train", subset=None, multi_obj=False):
-        self.raw_H, self.raw_W = 480, 640
+        self.raw_H, self.raw_W = 2000, 2000
         super().__init__(opt, split)
         assert opt.H / self.raw_H == opt.W / self.raw_W
 
         self.data_path = os.path.join(opt.data.root, opt.data.dataset)  # Data path to the bop dataset
         self.split_path = os.path.join("splits", opt.data.dataset, str(opt.data.object),
                                        opt.data.scene, "{}.txt".format(split))
+
         self.list = readlines(self.split_path)
         self.multi_obj = multi_obj
 

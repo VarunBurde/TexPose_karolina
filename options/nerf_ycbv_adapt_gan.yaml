@@ -102,10 +102,10 @@ optim_disc:                                                      # optimization 
 
 freq:                                                             # periodic actions during training
     scalar: 100                                            # log losses and scalar states (every N steps)
-    vis: 500                                              # visualize results (every N steps)
-    val: 2000                                             # validate on val set (every N epochs)
-    ckpt: 5000                                            # save checkpoint (every N epochs)
-    print: 500                                            # print status (every N epochs)
+    vis: 140000                                              # visualize results (every N steps)
+    val: 140000                                             # validate on val set (every N epochs)
+    ckpt: 40000                                            # save checkpoint (every N epochs)
+    print: 140000                                            # print status (every N epochs)
 
 render:
     N_candidate: 3

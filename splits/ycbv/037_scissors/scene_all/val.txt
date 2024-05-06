@@ -1,7 +1,0 @@
-037_scissors /mnt/proj3/open-29-7/varun_ws/datasets/YCB-V/ycbv/test/000051 681
-037_scissors /mnt/proj3/open-29-7/varun_ws/datasets/YCB-V/ycbv/test/000051 637
-037_scissors /mnt/proj3/open-29-7/varun_ws/datasets/YCB-V/ycbv/test/000051 240
-037_scissors /mnt/proj3/open-29-7/varun_ws/datasets/YCB-V/ycbv/test/000051 1092
-037_scissors /mnt/proj3/open-29-7/varun_ws/datasets/YCB-V/ycbv/test/000051 1729
-037_scissors /mnt/proj3/open-29-7/varun_ws/datasets/YCB-V/ycbv/test/000051 520
-037_scissors /mnt/proj3/open-29-7/varun_ws/datasets/YCB-V/ycbv/test/000051 636

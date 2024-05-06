@@ -1,7 +1,0 @@
-061_foam_brick /mnt/proj3/open-29-7/varun_ws/datasets/YCB-V/ycbv/test/000057 1628
-061_foam_brick /mnt/proj3/open-29-7/varun_ws/datasets/YCB-V/ycbv/test/000057 1539
-061_foam_brick /mnt/proj3/open-29-7/varun_ws/datasets/YCB-V/ycbv/test/000057 1066
-061_foam_brick /mnt/proj3/open-29-7/varun_ws/datasets/YCB-V/ycbv/test/000057 844
-061_foam_brick /mnt/proj3/open-29-7/varun_ws/datasets/YCB-V/ycbv/test/000057 526
-061_foam_brick /mnt/proj3/open-29-7/varun_ws/datasets/YCB-V/ycbv/test/000057 553
-061_foam_brick /mnt/proj3/open-29-7/varun_ws/datasets/YCB-V/ycbv/test/000057 597

@@ -1,1 +1,0 @@
-camera lm_test_all/test/000004 11

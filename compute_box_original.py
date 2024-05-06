@@ -46,7 +46,7 @@ def compose_Rt(rot_gt, tra_gt):
     return gt_pose
 
 
-def get_center_and_ray(pose, intr=None, H=2031, W=2448):  # [HW,2]
+def get_center_and_ray(pose, intr=None, H=480, W=640):  # [HW,2]
     # given the intrinsic/extrinsic matrices, get the camera center and ray directions]
     with torch.no_grad():
         # compute image coordinate grid
@@ -105,11 +105,11 @@ def parse_options():
     parser.add_argument("--height",
                         type=int,
                         help="input image height",
-                        default=2031)
+                        default=480)
     parser.add_argument("--width",
                         type=int,
                         help="input image width",
-                        default=2448)
+                        default=640)
     parser.add_argument("--res",
                         type=int,
                         help="network input size",
@@ -140,9 +140,6 @@ def parse_options():
                         action="store_true")
     parser.add_argument("--verbose",
                         action="store_true")
-    parser.add_argument("--root",
-                        type=str,
-                        default='dummy')
     return parser.parse_args()
 
 
@@ -154,57 +151,22 @@ def evaluate(opt):
     else:
         device = torch.device("cpu")
 
-    # # Initialize CAD Model
-    # if opt.dataset == 'lm':
-    #     object_name = LM_ID2NAME[opt.object_id]
-    # else:
-    #     object_name = str(opt.object_id)
-
-    # Acquire name and ID
+    # Initialize CAD Model
     if opt.dataset == 'lm':
         object_name = LM_ID2NAME[opt.object_id]
-
-    elif opt.dataset == 'ycbv':
-        object_name = YCB_ID2NAME[opt.object_id]
     else:
-        object_name = opt.object
+        object_name = str(opt.object_id)
 
     model = data.cad_model.CAD_Model()
     model_eval = data.cad_model.CAD_Model()
-
-    if opt.dataset == 'ycbv':
-        cad_model_dir = os.path.join(opt.root, opt.dataset)
-    else:
-        cad_model_dir = os.path.join(opt.root, opt.dataset, opt.dataset + '_models')
-
-    # cad_model_dir = os.path.join(opt.data_path, opt.dataset, opt.dataset + '_models')
-    # model.load(os.path.join(model_dir, 'models', 'obj_{}.ply'.format(str(opt.object_id).zfill(6))))
-    # model_eval.load(os.path.join(model_dir, 'models_eval', 'obj_{}.ply'.format(str(opt.object_id).zfill(6))))
-    #
-    # # Initialize renderer
-    # ply_fn = os.path.join(model_dir, 'models_eval', 'obj_{}.ply'.format(str(opt.object_id).zfill(6)))
-    # verts, faces = load_ply(ply_fn)
-    # textured_mesh = o3d.io.read_triangle_mesh(ply_fn)
-    print(object_name)
-
-    model.load(os.path.join(cad_model_dir, 'models', 'obj_{:06d}.ply'.format(opt.object_id)))
-    model_eval.load(os.path.join(cad_model_dir, 'models_eval', 'obj_{:06d}.ply'.format(opt.object_id)))
+    model_dir = os.path.join(opt.data_path, opt.dataset, opt.dataset + '_models')
+    model.load(os.path.join(model_dir, 'models', 'obj_{}.ply'.format(str(opt.object_id).zfill(6))))
+    model_eval.load(os.path.join(model_dir, 'models_eval', 'obj_{}.ply'.format(str(opt.object_id).zfill(6))))
 
     # Initialize renderer
-    if opt.dataset == 'ycbv':
-        ply_fn = os.path.join(cad_model_dir, 'models_texpose', 'obj_{:06d}.ply'.format(opt.object_id))
-        ply_fn_torch = os.path.join(cad_model_dir, 'models', 'obj_{:06d}.ply'.format(opt.object_id))
-    else:
-        ply_fn = os.path.join(cad_model_dir, 'models', 'obj_{}.ply'.format(str(opt.object_id).zfill(6)))
-
+    ply_fn = os.path.join(model_dir, 'models_eval', 'obj_{}.ply'.format(str(opt.object_id).zfill(6)))
+    verts, faces = load_ply(ply_fn)
     textured_mesh = o3d.io.read_triangle_mesh(ply_fn)
-
-    if opt.dataset == 'ycbv':
-        verts, faces = load_ply(ply_fn_torch)
-    else:
-        verts, faces = load_ply(ply_fn)
-
-
     color = torch.from_numpy(np.asarray(textured_mesh.vertex_colors).astype(np.float32))[None]
     textures = TexturesVertex(verts_features=color)
 
@@ -215,25 +177,22 @@ def evaluate(opt):
     mv_renderer = MVRenderer(cad_mesh, opt.res, opt.res, 1, cam, mode='complex')
 
     # Acquire the CAD diameter
-    with open(os.path.join(cad_model_dir, 'models_eval', 'models_info.json')) as f_info:
+    with open(os.path.join(model_dir, 'models_eval', 'models_info.json')) as f_info:
         model_info = json.load(f_info)
         f_info.close()
     model_diameter = float(model_info[str(opt.object_id)]['diameter'])
 
     # Initialize dataset and dataloader
     data_path = os.path.join(opt.data_path, opt.dataset)
-    # if 'train_syn2real' in opt.split_name:
-    #     data_path = '../self6dpp/datasets/BOP_DATASETS'
+    if 'train_syn2real' in opt.split_name:
+        data_path = '../self6dpp/datasets/BOP_DATASETS'
 
     split_path = os.path.join("splits", opt.dataset, object_name, "{}.txt".format(opt.split_name))
     samples = readlines(split_path)
 
-
     # Load GT pose, camera intrinsics and meta information
     line = samples[0].split(' ')
     model_name, folder = line[0], line[1]
-    print(model_name, folder)
-
     scene_obj_path = os.path.join(data_path, folder, 'scene_object.json')
     scene_gt_path = os.path.join(data_path, folder, 'scene_gt.json')
     scene_pred_path = os.path.join(data_path, folder, 'scene_pred_{}.json'.format(opt.pred_loop))
@@ -303,6 +262,7 @@ def evaluate(opt):
         # Acquire the emitted rays measured in current frame
         name = str(line[2]).zfill(6)
 
+        # acquire the pose and intrinsics
         rot = scene_pose_source[box_source][str(frame_index)][obj_scene_id]['cam_R_m2c']
         tra = scene_pose_source[box_source][str(frame_index)][obj_scene_id]['cam_t_m2c']
         cam = np.array(scene_cam_all[str(frame_index)]["cam_K"], dtype=np.float32).reshape(3, 3)
@@ -354,7 +314,7 @@ def evaluate(opt):
 
                     # Back-projection of CAD model
                     depth = depth.clamp(min=1e-3)
-                    depth = depth.view(batch_size, 2031 * 2448).unsqueeze(-1).cpu() / 1000  # [B,HW,1]
+                    depth = depth.view(batch_size, 480 * 640).unsqueeze(-1).cpu() / 1000  # [B,HW,1]
                     xy_grid = xy_grid.repeat(batch_size, 1, 1)  # [B,HW,2]
                     grid_3D = camera.img2cam(camera.to_hom(xy_grid) * depth, cam.cpu())  # [B,HW,3]
                     cad_points = grid_3D.float().cpu().squeeze().float().numpy()

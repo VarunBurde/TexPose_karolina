@@ -1,7 +1,0 @@
-008_pudding_box /mnt/proj3/open-29-7/varun_ws/datasets/YCB-V/ycbv/test/000058 576
-008_pudding_box /mnt/proj3/open-29-7/varun_ws/datasets/YCB-V/ycbv/test/000058 529
-008_pudding_box /mnt/proj3/open-29-7/varun_ws/datasets/YCB-V/ycbv/test/000058 30
-008_pudding_box /mnt/proj3/open-29-7/varun_ws/datasets/YCB-V/ycbv/test/000058 553
-008_pudding_box /mnt/proj3/open-29-7/varun_ws/datasets/YCB-V/ycbv/test/000058 1035
-008_pudding_box /mnt/proj3/open-29-7/varun_ws/datasets/YCB-V/ycbv/test/000058 541
-008_pudding_box /mnt/proj3/open-29-7/varun_ws/datasets/YCB-V/ycbv/test/000058 215

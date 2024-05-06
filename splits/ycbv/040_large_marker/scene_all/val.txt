@@ -1,4 +1,0 @@
-040_large_marker /mnt/proj3/open-29-7/varun_ws/datasets/YCB-V/ycbv/test/000059 37
-040_large_marker /mnt/proj3/open-29-7/varun_ws/datasets/YCB-V/ycbv/test/000059 648
-040_large_marker /mnt/proj3/open-29-7/varun_ws/datasets/YCB-V/ycbv/test/000059 88
-040_large_marker /mnt/proj3/open-29-7/varun_ws/datasets/YCB-V/ycbv/test/000059 80

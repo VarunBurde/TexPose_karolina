@@ -1,4 +1,5 @@
 opencv-python
 plyfile
 kornia
+open3d
 

@@ -1,1 +1,0 @@
-camera lm_train/train/000004 000400

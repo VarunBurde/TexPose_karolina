@@ -11,8 +11,10 @@ def convert_ply_to_texture(input_ply_file,  output_ply_file):
 
 
 if __name__ == '__main__':
-    ycbv_model_path = "/mnt/proj3/open-29-7/varun_ws/datasets/YCB-V/ycbv/models"
-    ycbv_model_output_path = "/mnt/proj3/open-29-7/varun_ws/datasets/YCB-V/ycbv/models_texpose"
+    ycbv_model_path = "/home/shared_data/datasets/YCBV/ycbv/models"
+    ycbv_model_output_path = "/home/shared_data/datasets/YCBV/ycbv/models_texpose"
+
+    os.makedirs(ycbv_model_output_path, exist_ok=True)
 
     for model in os.listdir(ycbv_model_path):
         if model.endswith(".ply"):

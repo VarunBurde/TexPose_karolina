@@ -1,8 +1,0 @@
-011_banana /mnt/proj3/open-29-7/varun_ws/datasets/YCB-V/ycbv/test/000050 682
-011_banana /mnt/proj3/open-29-7/varun_ws/datasets/YCB-V/ycbv/test/000050 1125
-011_banana /mnt/proj3/open-29-7/varun_ws/datasets/YCB-V/ycbv/test/000050 1745
-011_banana /mnt/proj3/open-29-7/varun_ws/datasets/YCB-V/ycbv/test/000050 640
-011_banana /mnt/proj3/open-29-7/varun_ws/datasets/YCB-V/ycbv/test/000050 1733
-011_banana /mnt/proj3/open-29-7/varun_ws/datasets/YCB-V/ycbv/test/000050 653
-011_banana /mnt/proj3/open-29-7/varun_ws/datasets/YCB-V/ycbv/test/000050 623
-011_banana /mnt/proj3/open-29-7/varun_ws/datasets/YCB-V/ycbv/test/000050 1066

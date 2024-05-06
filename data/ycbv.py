@@ -22,12 +22,14 @@ cv2.ocl.setUseOpenCL(False)
 
 class Dataset(base.Dataset):
     def __init__(self, opt, split="train", subset=None, multi_obj=False):
-        self.raw_H, self.raw_W = 480, 640
+        self.raw_H, self.raw_W = 2031, 2448
         super().__init__(opt, split)
         self.data_path = os.path.join(opt.data.root, opt.data.dataset)  # Data path to the bop dataset
 
-        self.split_path = os.path.join("splits", opt.data.dataset, str(opt.data.object),
+
+        self.split_path = os.path.join("splits", opt.data.dataset, str(opt.name),
                                        opt.data.scene, "{}.txt".format(split))
+        print("Loading split from: ", self.split_path)
         self.list = readlines(self.split_path)
         self.multi_obj = multi_obj
 

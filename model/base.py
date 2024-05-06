@@ -24,7 +24,7 @@ class Model():
             os.makedirs(opt.output_path, exist_ok=True)
 
     def load_dataset(self, opt, eval_split="val"):
-        if opt.data.dataset == 'lm' and opt.data.image_size == [480, 640]:
+        if opt.data.dataset == 'lm' and opt.data.image_size == [2031, 2448]:
             dataset_name = 'lmf'
         else:
             dataset_name = opt.data.dataset
@@ -112,7 +112,8 @@ class Model():
         for batch in loader:
             # train iteration
             var = edict(batch)
-            var = util.move_to_device(var, opt.device)
+            # var = util.move_to_device(var, opt.device)
+            var = util.move_to_device(var, "cpu")
             loss = self.train_iteration(opt, var, loader)
         # after train epoch
         # if (self.ep + 1) % opt.freq.print == 0: log.loss_train(opt, self.ep + 1, lr, loss.all, self.timer)

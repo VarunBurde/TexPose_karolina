@@ -1,7 +1,0 @@
-052_extra_large_clamp /mnt/proj3/open-29-7/varun_ws/datasets/YCB-V/ycbv/test/000048 2133
-052_extra_large_clamp /mnt/proj3/open-29-7/varun_ws/datasets/YCB-V/ycbv/test/000048 2104
-052_extra_large_clamp /mnt/proj3/open-29-7/varun_ws/datasets/YCB-V/ycbv/test/000048 1024
-052_extra_large_clamp /mnt/proj3/open-29-7/varun_ws/datasets/YCB-V/ycbv/test/000048 1587
-052_extra_large_clamp /mnt/proj3/open-29-7/varun_ws/datasets/YCB-V/ycbv/test/000048 1137
-052_extra_large_clamp /mnt/proj3/open-29-7/varun_ws/datasets/YCB-V/ycbv/test/000048 1133
-052_extra_large_clamp /mnt/proj3/open-29-7/varun_ws/datasets/YCB-V/ycbv/test/000048 1124

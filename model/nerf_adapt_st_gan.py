@@ -49,7 +49,8 @@ class Model(base.Model):
         self.test_data = data.Dataset(opt, split=eval_split, subset=opt.data.val_sub, multi_obj=opt.data.multi_obj)
         self.test_loader = self.test_data.setup_loader(opt, shuffle=False)  # prefetch all training data
         self.train_data.prefetch_all_data(opt)
-        self.train_data.all = edict(util.move_to_device(self.train_data.all, opt.device))
+        # self.train_data.all = edict(util.move_to_device(self.train_data.all, opt.device))
+        self.train_data.all = edict(util.move_to_device(self.train_data.all, "cpu"))
 
     def build_networks(self, opt):
         super().build_networks(opt)  # include parameters from graph (nerf ...)
@@ -343,10 +344,10 @@ class Model(base.Model):
                 mask_map = var.obj_mask.view(-1, opt.H, opt.W, 1).permute(0, 3, 1, 2)  # [B,1,H,W]
 
                 if opt.data.image_size != [128, 128]:
-                    image = torch_F.interpolate(image, size=[480, 640], mode='bilinear', align_corners=False)
-                    rgb_map = torch_F.interpolate(rgb_map, size=[480, 640], mode='bilinear', align_corners=False)
-                    depth_map = torch_F.interpolate(depth_map, size=[480, 640], mode='bilinear', align_corners=False)
-                    mask_map = torch_F.interpolate(mask_map, size=[480, 640], mode='nearest')
+                    image = torch_F.interpolate(image, size=[2031, 2448], mode='bilinear', align_corners=False)
+                    rgb_map = torch_F.interpolate(rgb_map, size=[2031, 2448], mode='bilinear', align_corners=False)
+                    depth_map = torch_F.interpolate(depth_map, size=[2031, 2448], mode='bilinear', align_corners=False)
+                    mask_map = torch_F.interpolate(mask_map, size=[2031, 2448], mode='nearest')
                 if opt.data.scene == 'scene_vis':
                     rgb_map = torchvision_F.center_crop(rgb_map, (256, 256))
                     image = torchvision_F.center_crop(image, (256, 256))

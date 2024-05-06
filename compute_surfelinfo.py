@@ -67,7 +67,7 @@ def normal_from_depth(pose, depth, intr, h, w, vis=False):
 # TODO: make sure we choose the right 2d Box (HW format, and 2D box source)
 
 def compute_surfelinfo(opt):
-    assert opt.batch_size == 1 and opt.data.pose_source == 'predicted'
+    # assert opt.batch_size == 1 and opt.data.pose_source == 'predicted'
 
     # Set the cuda device
     if torch.cuda.is_available():
@@ -75,6 +75,8 @@ def compute_surfelinfo(opt):
         torch.cuda.set_device(device)
     else:
         device = torch.device("cpu")
+
+    print(opt.data.object)
 
     # Acquire name and ID
     if opt.data.dataset == 'lm':
@@ -104,6 +106,7 @@ def compute_surfelinfo(opt):
     if opt.data.dataset == 'ycbv':
         ply_fn = os.path.join(cad_model_dir, 'models_texpose', 'obj_{:06d}.ply'.format(object_id))
         ply_fn_torch = os.path.join(cad_model_dir, 'models', 'obj_{:06d}.ply'.format(object_id))
+        print(ply_fn, ply_fn_torch)
     else:
         ply_fn = os.path.join(cad_model_dir, 'models', 'obj_{}.ply'.format(str(object_id).zfill(6)))
 
